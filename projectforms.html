@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Boogaloo&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="img/forms_ico.png">
+    <title>Write To Us</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500&family=Fredoka+One&family=Jomhuria&display=swap');
+*{
+    margin: 0%;
+    padding: 0%;
+    height: 100%;
+    overflow: hidden;
+    color: white;
+}
+::placeholder{
+    font-family: 'Jomhuria', cursive;
+    font-size: x-large;
+}
+#error_name,#error_suggestions,#error_email
+{
+    color: red;
+    font-size: 0.8vw;
+    font-weight: 300;
+    padding: 0.5vw 0vw;
+    font-family: 'Fredoka One', cursive;
+}
+.wrap {
+    width: 100%;
+}
+.fleft {
+    float:left; 
+    width: 65%;
+    background-image: url(img/forms.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.fright {
+    float: right;
+    background:rgb(0, 0, 0);
+    width: 35%;
+}
+input, select, textarea{
+    border: hidden;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    outline: black;
+    margin: 0%;
+    padding: 1%;
+}
+.form{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    border: 0.18vw solid rgb(139, 137, 137);
+    border-radius: 0.65vw; 
+    padding: 0.65vw;
+    display:inline-block;
+    transition: border ease-in-out 0.3s;
+}
+.form:hover{
+    border: 0.24vw solid blue;
+}
+
+textarea{
+    overflow: auto;
+    resize: vertical;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    
+    border: none;
+}
+.body{
+    padding: 10%;
+    margin-top:10%;
+    margin-left: 5%;
+}
+.heading{
+    position: absolute;
+    z-index: 2; 
+    top: 15%; 
+    right: 9%;
+    font-family: 'Fredoka One', cursive; 
+    font-size: xx-large;
+}
+.titlebox, label{
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.7vw;
+}
+.message{
+    position: relative; 
+    left: 26%; 
+    top: -6%;
+    font-family: 'Fredoka One', cursive;
+    font-size: 2vw;
+}
+option{
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.8vw;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-family: 'Fredoka One', cursive;
+    
+}
+input[type=submit] {
+
+    height: auto;
+    width: 100%;
+    background-color: #210af1;
+    color: white;
+    padding: 0.91vw 1.3vw; /*14 20 8*/
+    margin: 0.52vw 0vw;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5vw;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2vw;
+    text-align: center;
+}
+
+input[type=submit]:hover {
+    background-color: #0bace2;
+    transition:1.5s;
+    color: black;
+}
+a{
+    text-decoration: none;
+}
+
+.navbar{
+    background-color: rgb(6, 6, 7);
+    width: 100%;
+    color: aliceblue;
+    float: left;
+    font-size: 1.1vw;
+}
+.navbutton, .navdropdown{
+    background-color: rgb(6, 6, 7);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 0.8vw 0.6vw;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Staatliches', cursive;
+    letter-spacing: 0.2vw;
+    position: relative;
+    
+}
+.navbutton{
+    width:7.5vw;
+}
+.navdropdown{
+    display:none;
+    position: absolute;
+    z-index: 1;
+}
+.navbutton:hover{
+    background-color: rgb(46, 45, 45);
+}
+.navbutton:hover .navdropdown{
+    display: block;
+}
+
+</style>
+<body>
+    <div class="navbar" style="height: min-content;">
+        <a href="../index.html" class="navbutton">Home</a>
+    </div>
+    <div class="wrap">
+        <div class="fleft"></div>
+        <div class="fright"> 
+            <form onsubmit="return valid();" method="GET">
+                <div class="body">
+                    <span class="message">WRITE TO US</span><br>
+                    <div class="form" id="one">
+                        <span class="titlebox">&nbsp;NAME</span> <br>
+                        <input type="text" name="Name" id="Name" placeholder="Enter your name...">
+                    </div> 
+                    <br> 
+                        <span id="error_name"></span>
+                    <br>
+                    <div class="form" id="two">
+                        <span class="titlebox">&nbsp;EMAIL ADDRESS</span> <br>
+                        <input type="text" name="Email" id="Email" placeholder="Enter your email...">
+                    </div> 
+                    <br> 
+                        <span id="error_email"></span>
+                    <br>
+                    <div class="form" id="three">
+                        <span class="titlebox">&nbsp;WHY DO YOU LOVE MUSIC?</span> <br>
+                        <select id="choice" name="choice">
+                            <option value="" disabled selected>Select your option</option>
+                            <option value="happy">Is your Happy Place</option>
+                            <option value="stressbuster">Is a Stressbuster for you</option>
+                            <option value="workflow">Helps with your workflow</option>
+                            <option value="cherish">Helps you Cherish Moments</option>
+                            <option value="aota">All of the above</option>
+                        </select>
+                    </div> <br><br>
+                    <div class="form" id="four">
+                        <label for="feedback">&nbsp;SUGGESTIONS</label> <br>
+                        <textarea id="feedback" placeholder="Help us improve our website by giving us a suggestion..." rows="10" cols="50"></textarea>
+                    </div>
+                    <br> 
+                        <span id="error_suggestions"></span>
+                    <br>
+                    <div>
+                        <input type="submit" value="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
